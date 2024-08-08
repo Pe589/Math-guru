@@ -1,13 +1,26 @@
 document.getElementById('math-form').addEventListener('submit', function(event) {
     event.preventDefault();
+    const problemType = document.getElementById('problem-type').value;
     const problem = document.getElementById('problem').value;
-    const solution = solveProblem(problem);
+    const solution = solveProblem(problemType, problem);
     document.getElementById('solution').innerHTML = solution;
 });
 
-function solveProblem(problem) {
-    // Basic parser for linear equations of the form ax + b = c
-    const match = problem.match(/(-?\d*)x\s*([-+]\s*\d+)\s*=\s*(-?\d+)/);
+function solveProblem(problemType, problem) {
+    switch (problemType) {
+        case 'linear':
+            return solveLinearEquation(problem);
+        case 'quadratic':
+            return solveQuadraticEquation(problem);
+        case 'geometry':
+            return solveGeometryProblem(problem);
+        default:
+            return "Problem type not recognized.";
+    }
+}
+
+function solveLinearEquation(equation) {
+    const match = equation.match(/(-?\d*)x\s*([-+]\s*\d+)\s*=\s*(-?\d+)/);
     if (match) {
         const a = parseFloat(match[1] || '1');
         const b = parseFloat(match[2].replace(/\s+/g, ''));
@@ -19,4 +32,16 @@ function solveProblem(problem) {
     } else {
         return "Unable to solve the equation. Please enter a problem in the form 'ax + b = c'.";
     }
+}
+
+function solveQuadraticEquation(equation) {
+    // Basic implementation of quadratic equation solver
+    // For example, ax^2 + bx + c = 0
+    // You will need to implement parsing and solving here
+    return "Quadratic equation solving not yet implemented.";
+}
+
+function solveGeometryProblem(problem) {
+    // Implement logic to solve geometry problems, such as area or perimeter
+    return "Geometry problem solving not yet implemented.";
 }

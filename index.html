@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Solver Tool</title>
+    <title>8th Grade Math Solver</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,9 +21,16 @@
 </head>
 <body>
     <div id="tool-container">
-        <h1>Math Solver Tool</h1>
+        <h1>8th Grade Math Solver</h1>
         <form id="math-form">
-            <label for="problem">Enter your problem (e.g., 2x + 3 = 7):</label>
+            <label for="problem-type">Choose a problem type:</label>
+            <select id="problem-type">
+                <option value="linear">Linear Equation</option>
+                <option value="quadratic">Quadratic Equation</option>
+                <option value="geometry">Geometry</option>
+            </select>
+            <br><br>
+            <label for="problem">Enter your problem:</label>
             <input type="text" id="problem" name="problem" placeholder="e.g., 2x + 3 = 7">
             <button type="submit">Solve</button>
         </form>
